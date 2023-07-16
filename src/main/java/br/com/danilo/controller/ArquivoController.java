@@ -29,9 +29,11 @@ public class ArquivoController {
 	@PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) throws WppException, IOException  {
 		
-		Retorno retorno = service.salvar(file);
+		service.salvar(file);
 
-		return ResponseEntity.ok(retorno);
+		return ResponseEntity.ok(Retorno.builder()
+					   				    .mensagem("arquivo salvo com sucesso!")
+					   				    .build());
 	}
 	
 	@GetMapping("{id}/download")

@@ -30,7 +30,7 @@ public class ImportacaoService {
 	
 	final String EMAIL_USUARIO_WEB = "a@a.com";
 
-	public Retorno salvar(MultipartFile file) throws WppException, IOException {
+	public Importacao salvar(MultipartFile file) throws WppException, IOException {
 
 		Importacao importacao = Importacao.builder()
 								.nomeArquivo(file.getOriginalFilename())
@@ -44,9 +44,8 @@ public class ImportacaoService {
 
 		importacaoRep.save(importacao);
 		
-		return Retorno.builder()
-				.mensagem("arquivo salvo com sucesso!")
-				.build();
+		return importacao;
+		
 	}
 
 	public Importacao consultar(Long id) throws WppException {
