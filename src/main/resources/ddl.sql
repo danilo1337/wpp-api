@@ -18,3 +18,16 @@ CREATE TABLE tb_importacao (
   CONSTRAINT pk_importacao PRIMARY KEY (id),
   CONSTRAINT fk_tb_importacao_to_tb_usuario_id FOREIGN KEY (usuario_id) REFERENCES tb_usuario (id)
 );
+
+CREATE TABLE tb_contato(
+	id INT IDENTITY(1,1),
+	cpf_cnpj varchar(16),
+	nome varchar(255) NOT NULL,
+	telefone varchar(30) NOT NULL,
+	observacao varchar(100),
+	usuario_id INT NOT NULL,
+	importacao_id INT NOT NULL,	
+	CONSTRAINT pk_contato PRIMARY KEY (id),
+	CONSTRAINT fk_tb_contato_to_tb_usuario FOREIGN KEY (usuario_id) REFERENCES tb_usuario (id),
+	CONSTRAINT fk_tb_contato_to_tb_importacao FOREIGN KEY (importacao_id) REFERENCES tb_importacao (id)
+);
