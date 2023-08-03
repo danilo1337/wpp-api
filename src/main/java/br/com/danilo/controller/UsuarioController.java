@@ -18,6 +18,8 @@ import br.com.danilo.enums.EnumSimNao;
 import br.com.danilo.enums.EnumStatus;
 import br.com.danilo.service.UsuarioService;
 
+import static java.lang.String.format;
+
 @RestController
 @RequestMapping("usuarios")
 public class UsuarioController {
@@ -44,7 +46,7 @@ public class UsuarioController {
 	public ResponseEntity<?> alterarStatusUsuario(@PathVariable Long id, @RequestBody StatusUsuario statusUsuario) {
 		
 		Retorno retorno = Retorno.builder()
-				 .mensagem("Usuário "+ statusUsuario.getStatus().getDescricao()+" com sucesso!")
+				.mensagem(format("Usuário %s com sucesso!", statusUsuario.getStatus().getDescricao()))
 				.build();
 		
 		Usuario usuario = new Usuario();

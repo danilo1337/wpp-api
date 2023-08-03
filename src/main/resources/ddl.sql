@@ -1,7 +1,8 @@
 CREATE TABLE tb_usuario (
   id int identity(1,1),
   nome VARCHAR(255) NOT NULL,
-  senha VARCHAR(255) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  senha VARCHAR(500) NOT NULL,
   email varchar(255) NOT NULL UNIQUE,
   dt_criacao DATETIME DEFAULT getdate() NOT NULL,
   dt_atualizacao DATETIME DEFAULT getdate() NOT NULL,
@@ -31,3 +32,11 @@ CREATE TABLE tb_contato(
 	CONSTRAINT fk_tb_contato_to_tb_usuario FOREIGN KEY (usuario_id) REFERENCES tb_usuario (id),
 	CONSTRAINT fk_tb_contato_to_tb_importacao FOREIGN KEY (importacao_id) REFERENCES tb_importacao (id)
 );
+
+
+CREATE TABLE tb_permissao (
+  username  VARCHAR(50) NOT NULL,
+  permissao VARCHAR(50) NOT NULL,
+  CONSTRAINT fk_permisao_usuario FOREIGN KEY (username) REFERENCES tb_usuario (username)
+);
+

@@ -2,6 +2,7 @@ package br.com.danilo.negocio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.danilo.entity.Usuario;
@@ -16,8 +17,8 @@ public class UsuarioNeg {
 
 	public void cadastrarUsuario(Usuario usuario) throws WppException {
 		usuario.setAtivo(EnumSimNao.N);
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		rep.save(usuario);
-
 	}
 
 	public void alterarStatusUsuario(Usuario usuario) throws WppException {
