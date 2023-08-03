@@ -41,6 +41,7 @@ public class ArquivoController {
 		return service.downloadArquivo(id);
 	}
 	
+	
 	@GetMapping("{id}/visualizar")
 	public ResponseEntity<?> visualizarArquivo(@PathVariable Long id) throws WppException {
 		return service.visualizarArquivo(id);
