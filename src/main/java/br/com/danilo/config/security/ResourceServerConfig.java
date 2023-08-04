@@ -22,8 +22,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				"/v2/api-docs",
 				"/configuration/**",
 				"/swagger*/**",
-				"/webjars/**")
+				"/webjars/**",
+				"/v3/api-docs")
 			.permitAll()
+			.antMatchers("/oauth/token").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
