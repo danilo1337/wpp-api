@@ -1,8 +1,11 @@
 package br.com.danilo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.danilo.dto.usuario.ConsultaUsuario;
 import br.com.danilo.entity.Usuario;
 import br.com.danilo.exception.WppException;
 import br.com.danilo.negocio.UsuarioNeg;
@@ -27,6 +30,10 @@ public class UsuarioService {
 		} catch (WppException e) {
 			
 		}
+	}
+	
+	public List<ConsultaUsuario> listarUsuarios() {
+		return usuarioNeg.listarUsuarios();
 	}
 
 }
