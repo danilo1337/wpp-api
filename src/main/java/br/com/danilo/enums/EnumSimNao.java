@@ -28,8 +28,7 @@ public enum EnumSimNao {
 	public String toString() {
 		return getNome();
 	}
-
-	@JsonValue
+	
 	public char toValue() {
 		return getNome().charAt(0);
 	}

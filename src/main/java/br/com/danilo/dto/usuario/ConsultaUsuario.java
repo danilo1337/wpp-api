@@ -2,11 +2,12 @@ package br.com.danilo.dto.usuario;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.com.danilo.entity.Contato;
-import br.com.danilo.entity.Importacao;
-import br.com.danilo.entity.Usuario;
+import br.com.danilo.enums.EnumSimNao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -29,6 +30,9 @@ public class ConsultaUsuario {
 	private String username;
 	
 	private String email;
+	
+	@Enumerated(EnumType.STRING)
+	private EnumSimNao ativo;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	private LocalDateTime dataCriacao;
