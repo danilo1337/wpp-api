@@ -75,7 +75,7 @@ public class UsuarioController {
 	@PreAuthorize(Role.ADMIN)
 	@GetMapping
 	public Page<ConsultaUsuario> listarUsuarios(
-			@PathVariable(required = false, name = "ativo") String ativo,
+			@RequestParam(required = false, name = "ativo") Boolean ativo,
 			@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "20") int size) {
 		

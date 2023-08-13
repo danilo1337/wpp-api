@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import br.com.danilo.dto.usuario.ConsultaUsuario;
 import br.com.danilo.entity.Usuario;
@@ -53,21 +52,13 @@ public class UsuarioNeg {
 		return consultaUsuarios;
 	}
 
-	public Page<ConsultaUsuario> listarUsuarios(String ativo, Pageable pageable) {
+	public Page<ConsultaUsuario> listarUsuarios(Boolean ativo, Pageable pageable) {
 		
-		Page<Usuario> usuariosPage;
-		
-		if (StringUtils.hasText(ativo)) {
-			usuariosPage = rep.findByAtivo(ativo, pageable);
-			return null;
-		} else {
-			usuariosPage = rep.findAll(pageable);
-		}
+		Page<Usuario> usuariosPage = rep.findByAtivo(ativo, pageable);
 		
 		return usuariosPage.map(this::convertToConsultaUsuario);
 		
 	}
-	
 	
 	private ConsultaUsuario convertToConsultaUsuario(Usuario usuario) {
 		ConsultaUsuario consultaUsuario = new ConsultaUsuario();
