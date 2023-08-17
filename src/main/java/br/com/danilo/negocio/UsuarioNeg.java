@@ -52,9 +52,9 @@ public class UsuarioNeg {
 		return consultaUsuarios;
 	}
 
-	public Page<ConsultaUsuario> listarUsuarios(Boolean ativo, Pageable pageable) {
+	public Page<ConsultaUsuario> listarUsuarios(String nome, Boolean ativo, Pageable pageable) {
 		
-		Page<Usuario> usuariosPage = rep.findByAtivo(ativo, pageable);
+		Page<Usuario> usuariosPage = rep.findByAtivo(nome, ativo, pageable);
 		
 		return usuariosPage.map(this::convertToConsultaUsuario);
 		

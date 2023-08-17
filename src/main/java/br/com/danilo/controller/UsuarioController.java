@@ -75,13 +75,14 @@ public class UsuarioController {
 	@PreAuthorize(Role.ADMIN)
 	@GetMapping
 	public Page<ConsultaUsuario> listarUsuarios(
+			@RequestParam(required = false, name = "nome") String nome,
 			@RequestParam(required = false, name = "ativo") Boolean ativo,
 			@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "20") int size) {
 		
 		 Pageable pageable = PageRequest.of(page, size);
 		
-		return service.listarUsuarios(ativo, pageable);
+		return service.listarUsuarios(nome, ativo, pageable);
 	}
 
 }

@@ -38,8 +38,8 @@ public class UsuarioService {
 		return usuarioNeg.listarUsuarios();
 	}
 	
-	public Page<ConsultaUsuario> listarUsuarios(Boolean ativo, Pageable pageable){
-		return usuarioNeg.listarUsuarios(ativo, pageable);
+	public Page<ConsultaUsuario> listarUsuarios(String nome, Boolean ativo, Pageable pageable){
+		return usuarioNeg.listarUsuarios(nome, ativo, pageable);
 	}
 
 }
